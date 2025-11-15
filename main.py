@@ -1,4 +1,9 @@
+import subprocess
+import sys
 import pygame
+
+subprocess.Popen([sys.executable, "CheckPassword.py"])
+print(sys.executable)
 
 pygame.init()
 
