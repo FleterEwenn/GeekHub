@@ -10,12 +10,12 @@ def evaluate_password(password:str):
     #  https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/mots-de-passe#:~:text=Utilisez%20un%20mot%20de%20passe%20suffisamment%20long%20et%20complexe&text=Pour%20emp%C3%AAcher%20ce%20type%20d,chiffres%20et%20des%20caract%C3%A8res%20sp%C3%A9ciaux.
 
     point = 20
-    dontuse_list = ['abcde', '1234', '0000', 'azerty', 'motdepasse'] # liste non exhaustive
+    dontuse_list = ['abcde', '1234', '0000', 'azerty', 'motdepasse', 'mdp'] # liste non exhaustive
 
     # verification de mot de passe à fortifiée
     for pattern in dontuse_list :
         if pattern in password:
-            point -= 10
+            point -= 20
 
     if len(password) < 7:
         point -= 10
@@ -43,6 +43,7 @@ def evaluate_password(password:str):
     label_check = Label(window, text=response, fg=label_color)
     
     label_check.pack()
+    label_check.after(3000, label_check.destroy)
 
 def check_password(frame:Frame):
     frame.destroy()

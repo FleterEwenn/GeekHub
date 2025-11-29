@@ -12,9 +12,12 @@ class Player:
     def __init__(self):
         self.image_index = 0
         self.frame = jay_list[self.image_index]
-        self.x = 0
-        self.y = 0
+        self.rect = pygame.Rect(0, 0, image_size, image_size)
         self.frame_timer = 0
+    
+    def reset_pos(self):
+        self.rect.x = 500
+        self.rect.y = 336
     
     def update(self, dt:int):
         self.frame_timer += dt
@@ -24,14 +27,15 @@ class Player:
         
         keys = pygame.key.get_pressed()
         if keys[pygame.K_DOWN]:
-            self.y += 5
+            self.rect.y += 5
             self.frame = jay_list[self.image_index]
         elif keys[pygame.K_UP]:
-            self.y -= 5
+            self.rect.y -= 5
         elif keys[pygame.K_LEFT]:
-            self.x -= 5
+            self.rect.x -= 5
         elif keys[pygame.K_RIGHT]:
-            self.x += 5
+            self.rect.x += 5
     
     def draw(self, surface:pygame.Surface):
-        surface.blit(self.frame, (self.x, self.y))
+        surface.blit(self.frame, (self.rect.x, self.rect.y))
+        pygame.draw.rect(surface, (255, 0, 0), self.rect, 1)
