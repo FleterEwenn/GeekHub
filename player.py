@@ -12,12 +12,12 @@ class Player:
     def __init__(self):
         self.image_index = 0
         self.frame = jay_list[self.image_index]
-        self.rect = pygame.Rect(0, 0, image_size, image_size)
+        self.rect = pygame.Rect(455, 280, image_size, image_size)
         self.frame_timer = 0
     
     def reset_pos(self):
-        self.rect.x = 500
-        self.rect.y = 336
+        self.rect.x = 455
+        self.rect.y = 280
     
     def update(self, dt:int):
         self.frame_timer += dt
