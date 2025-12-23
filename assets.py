@@ -62,3 +62,35 @@ def get_cole1()->dict:
     cole1_dict["left"] = cole1_left_list
     cole1_dict["right"] = cole1_right_list
     return cole1_dict
+
+kai1_sprite = pygame.image.load("assets/ninjas/KAI1/KAI1_head.png")
+kai1_head_list = [
+    kai1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+kai1_sprite = pygame.image.load("assets/ninjas/KAI1/KAI1_back.png")
+kai1_back_list = [
+    kai1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+kai1_sprite = pygame.image.load("assets/ninjas/KAI1/KAI1_left.png")
+kai1_left_list = [
+    kai1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+kai1_sprite = pygame.image.load("assets/ninjas/KAI1/KAI1_right.png")
+kai1_right_list = [
+    kai1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+def get_kai1():
+    kai1_dict = {}
+    kai1_dict["head"] = kai1_head_list
+    kai1_dict["back"] = kai1_back_list
+    kai1_dict["right"] = kai1_right_list
+    kai1_dict["left"] = kai1_left_list
+    return kai1_dict
