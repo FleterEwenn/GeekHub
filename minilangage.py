@@ -19,7 +19,7 @@ def executer_code(code:list[str]):
         elif line.startswith("nindroide "): # creation d'une variable
             try:
                 current_line = line.split("=")
-                name = current_line[0][10:]
+                current_name = current_line[0][9:].strip()
                 val = current_line[1]
 
                 for name in var.keys():
@@ -32,13 +32,13 @@ def executer_code(code:list[str]):
                         
                         val = tojoin.join(val)
 
-                var[name] = eval(val)
+                var[current_name] = eval(val)
             except Exception as e:
                 print(e)
             except ValueError as e:
                 print(e)
     
-    print(var)
+        print(var)
 
 window = Tk()
 
