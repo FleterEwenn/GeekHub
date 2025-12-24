@@ -11,11 +11,30 @@ def split_code():
             clean_lines.append(line.strip())
     executer_code(clean_lines)
 
+def ecrire_console(text_to_print):
+    console.config(state='normal')
+    console.insert(END, "\n" + str(text_to_print))
+    console.config(state='disabled')
+
 def executer_code(code:list[str]):
 
     for line in code:
-        if line.startswith("spinjutzu"): # affichage dans la console
-            pass
+        if line.startswith("spinjutzu "): # affichage dans la console
+            current_line = line
+            current_text = current_line[10:]
+
+            for name in var.keys():
+                if name in current_text:
+                    current_text = current_text.split(name)
+                    if type(var[name]) == str:
+                        tojoin = "'" + var[name] + "'"
+                    else:
+                        tojoin = str(var[name])
+                    
+                    current_text = tojoin.join(current_text)
+
+            ecrire_console(eval(current_text))
+
         elif line.startswith("nindroide "): # creation d'une variable
             try:
                 current_line = line.split("=")
