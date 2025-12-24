@@ -26,6 +26,7 @@ kai_ico = pygame.image.load("assets/ninjas/KAI1/KAI1_icon.png")
 lloyd_ico = pygame.image.load("assets/ninjas/LLOYD1/LLOYD1_icon.png")
 wu_ico = pygame.image.load("assets/ninjas/WU1/WU1_icon.png")
 zane_ico = pygame.image.load("assets/ninjas/ZANE1/ZANE1_icon.png")
+nya_ico = pygame.image.load("assets/ninjas/NYA1/NYA1_icon.png")
 
 clock = pygame.time.Clock()
 timer = 0
@@ -60,10 +61,11 @@ while run:
         window.blit(wu_ico, (936, 5*64))
         window.blit(zane_ico, (936, 6*64))
         window.blit(jay2_ico, (936, 7*64))
+        window.blit(nya_ico, (936, 8*64))
 
         if pygame.mouse.get_pos()[0] >= 936 and pygame.mouse.get_pos()[0] <= 1000:
 
-            for i in range(1, 8):
+            for i in range(1, 9):
                 if pygame.mouse.get_pos()[1] >= 64*i and pygame.mouse.get_pos()[1] <= 64*(i+1) \
                   and pygame.mouse.get_pressed()[0] and timer >= 200:
                     timer = 0

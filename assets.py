@@ -94,3 +94,32 @@ def get_kai1():
     kai1_dict["right"] = kai1_right_list
     kai1_dict["left"] = kai1_left_list
     return kai1_dict
+
+jay2_sprite = pygame.image.load("assets/ninjas/JAY2/JAY2_head.png")
+jay2_head_list = [
+    jay2_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+jay2_sprite = pygame.image.load("assets/ninjas/JAY2/JAY2_back.png")
+jay2_back_list = [
+    jay2_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+jay2_sprite = pygame.image.load("assets/ninjas/JAY2/JAY2_left.png")
+jay2_left_list = [
+    jay2_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+jay2_sprite = pygame.image.load("assets/ninjas/JAY2/JAY2_right.png")
+jay2_right_list = [
+    jay2_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+def get_jay2()->dict:
+    jay2_dict = {}
+    jay2_dict['head'] = jay2_head_list
+    jay2_dict['back'] = jay2_back_list
+    jay2_dict['left'] = jay2_left_list
+    jay2_dict['right'] = jay2_right_list
+    return jay2_dict
