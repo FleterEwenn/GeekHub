@@ -123,3 +123,35 @@ def get_jay2()->dict:
     jay2_dict['left'] = jay2_left_list
     jay2_dict['right'] = jay2_right_list
     return jay2_dict
+
+wu1_sprite = pygame.image.load("assets/ninjas/WU1/WU1_head.png")
+wu1_head_list = [
+    wu1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+wu1_sprite = pygame.image.load("assets/ninjas/WU1/WU1_back.png")
+wu1_back_list = [
+    wu1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+wu1_sprite = pygame.image.load("assets/ninjas/WU1/WU1_right.png")
+wu1_right_list = [
+    wu1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+wu1_sprite = pygame.image.load("assets/ninjas/WU1/WU1_left.png")
+wu1_left_list = [
+    wu1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+def get_wu1():
+    wu1_dict = {}
+    wu1_dict["head"] = wu1_head_list
+    wu1_dict["back"] = wu1_back_list
+    wu1_dict["right"] = wu1_right_list
+    wu1_dict["left"] = wu1_left_list
+    return wu1_dict
