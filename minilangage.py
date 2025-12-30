@@ -2,6 +2,18 @@ from tkinter import *
 
 var = {}
 
+def replace_by_values(string:str)->str:
+    for name in var.keys():
+        if name in string:
+            string = string.split(name)
+            if type(var[name]) == str:
+                tojoin = "'" + var[name] + "'"
+            else:
+                tojoin = str(var[name])
+                    
+            string = tojoin.join(string)
+    return string
+
 def split_code():
     code = zone_text.get('1.0', END).strip()
     lines = code.split("\n")
@@ -23,15 +35,7 @@ def executer_code(code:list[str]):
             current_line = line
             current_text = current_line[10:]
 
-            for name in var.keys():
-                if name in current_text:
-                    current_text = current_text.split(name)
-                    if type(var[name]) == str:
-                        tojoin = "'" + var[name] + "'"
-                    else:
-                        tojoin = str(var[name])
-                    
-                    current_text = tojoin.join(current_text)
+            current_text = replace_by_values(current_text)
 
             ecrire_console(eval(current_text))
 
@@ -41,15 +45,7 @@ def executer_code(code:list[str]):
                 current_name = current_line[0][9:].strip()
                 val = current_line[1]
 
-                for name in var.keys():
-                    if name in val:
-                        val = val.split(name)
-                        if type(var[name]) == str:
-                            tojoin = "'" + var[name] + "'"
-                        else:
-                            tojoin = str(var[name])
-                        
-                        val = tojoin.join(val)
+                val = replace_by_values(val)
 
                 var[current_name] = eval(val)
             except Exception as e:
