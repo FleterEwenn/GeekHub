@@ -231,3 +231,81 @@ def get_lloyd1()->dict:
     lloyd1_dict["left"] = lloyd1_left_list
     lloyd1_dict["idle"] = lloyd1_idle_list
     return lloyd1_dict
+
+nya1_sprite = pygame.image.load("assets/ninjas/NYA1/NYA1_head.png")
+nya1_head_list = [
+    nya1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+nya1_sprite = pygame.image.load("assets/ninjas/NYA1/NYA1_back.png")
+nya1_back_list = [
+    nya1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+nya1_sprite = pygame.image.load("assets/ninjas/NYA1/NYA1_right.png")
+nya1_right_list = [
+    nya1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+nya1_sprite = pygame.image.load("assets/ninjas/NYA1/NYA1_left.png")
+nya1_left_list = [
+    nya1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+nya1_sprite = pygame.image.load("assets/ninjas/NYA1/NYA1_idle.png")
+nya1_idle_list = [
+    nya1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(2)
+]
+
+def get_nya1()->dict:
+    nya1_dict = {}
+    nya1_dict["head"] = nya1_head_list
+    nya1_dict["back"] = nya1_back_list
+    nya1_dict["right"] = nya1_right_list
+    nya1_dict["left"] = nya1_left_list
+    nya1_dict["idle"] = nya1_idle_list
+    return nya1_dict
+
+zane1_sprite = pygame.image.load("assets/ninjas/ZANE1/ZANE1_head.png")
+zane1_head_list = [
+    zane1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+zane1_sprite = pygame.image.load("assets/ninjas/ZANE1/ZANE1_back.png")
+zane1_back_list = [
+    zane1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+zane1_sprite = pygame.image.load("assets/ninjas/ZANE1/ZANE1_right.png")
+zane1_right_list = [
+    zane1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+zane1_sprite = pygame.image.load("assets/ninjas/ZANE1/ZANE1_left.png")
+zane1_left_list = [
+    zane1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(6)
+]
+
+zane1_sprite = pygame.image.load("assets/ninjas/ZANE1/ZANE1_idle.png")
+zane1_idle_list = [
+    zane1_sprite.subsurface(pygame.Rect(i * image_size, 0, image_size, image_size))
+    for i in range(2)
+]
+
+def get_zane1()->dict:
+    zane1_dict = {}
+    zane1_dict["head"] = zane1_head_list
+    zane1_dict["back"] = zane1_back_list
+    zane1_dict["right"] = zane1_right_list
+    zane1_dict["left"] = zane1_left_list
+    zane1_dict["idle"] = zane1_idle_list
+    return zane1_dict

@@ -1,5 +1,5 @@
 import pygame
-from assets import get_jay1, get_cole1, get_kai1, get_jay2, get_wu1, get_lloyd1
+from assets import get_jay1, get_cole1, get_kai1, get_jay2, get_wu1, get_lloyd1, get_nya1, get_zane1
 
 class Player:
     def __init__(self):
@@ -59,5 +59,9 @@ class Player:
             self.all_frames = get_lloyd1()
         elif id == 5:
             self.all_frames = get_wu1()
+        elif id == 6:
+            self.all_frames = get_zane1()
         elif id == 7:
             self.all_frames = get_jay2()
+        elif id == 8:
+            self.all_frames = get_nya1()
