@@ -3,8 +3,34 @@ from tkinter import *
 var = {}
 list_if_codes = []
 
+def trifusion(list_:list)->list:
+    n = len(list_)
+    c = n//2
+
+    if n <= 1:
+        return list_
+    
+    else:
+        list1 = trifusion(list_[:c])
+        list2 = trifusion(list_[c:])
+        return fusionner(list1, list2)
+
+def fusionner(list1:list, list2:list)->list:
+    if list2 == []:
+        return list1
+    if list1 == []:
+        return list2
+    
+    if len(list1[0]) > len(list2[0]):
+        return [list1[0]] + fusionner(list1[1:], list2)
+    else:
+        return [list2[0]] + fusionner(list1, list2[1:])
+
+
 def replace_by_values(string:str)->str:
-    for name in var.keys():
+    list_name = list(var.keys())
+    list_name = trifusion(list_name)
+    for name in list_name:
         if name in string:
             string = string.split(name)
             if type(var[name]) == str:
@@ -48,7 +74,6 @@ def ecrire_console(text_to_print):
 def executer_code(code:list[str]):
 
     for line in code:
-        print(line)
         if line.startswith("spinjutzu "): # affichage dans la console
             try:
                 current_line = line
@@ -89,7 +114,7 @@ def executer_code(code:list[str]):
                         name += char
                     if char == "'":
                         on_name = not on_name
-                ecrire_console(f"la variable '{name[:-1]}' n'est pas definie, ligne {list_line.index(line) + 1}")
+                ecrire_console(f"la variable '{name[:-1]}' n'est pas definie, ligne {code.index(line) + 1}")
             except Exception as e:
                 ecrire_console(e)
 
@@ -128,7 +153,6 @@ def executer_code(code:list[str]):
 
             except NameError as e:
                 name = ""
-                print(e)
                 on_name = False
                 for char in str(e):
                     if on_name:
@@ -176,8 +200,6 @@ def executer_code(code:list[str]):
 
         elif line != "}":
             ecrire_console(f"la commande n'existe pas, ligne {code.index(line) + 1}")
-        
-        print(var)
 
 window = Tk()
 
