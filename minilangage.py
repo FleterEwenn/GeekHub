@@ -41,9 +41,13 @@ def replace_by_values(string:str)->str:
     return string
 
 def split_code():
+    global nbr_line
+    nbr_line = 0
     code = zone_text.get('1.0', END).strip()
     lines = code.split("\n")
     clean_lines = []
+
+    nbr_if = 0
 
     if_code = []
     on_if = False
@@ -57,14 +61,19 @@ def split_code():
             clean_lines.append(line.strip())
 
         if line != "" and line.strip()[-1] == "{":
+            nbr_if += 1
             on_if = True
         if line != "" and line.strip()[-1] == "}":
+            nbr_if -= 1
             on_if = False
             list_if_codes.append(if_code)
             if_code = []
 
     ecrire_console("")
-    executer_code(clean_lines)
+    if nbr_if != 0:
+        ecrire_console("erreur de syntaxe : '{' ou '}' a été utilisé à tort")
+    else:
+        executer_code(clean_lines)
 
 def ecrire_console(text_to_print):
     console.config(state='normal')
@@ -72,8 +81,14 @@ def ecrire_console(text_to_print):
     console.config(state='disabled')
 
 def executer_code(code:list[str]):
+    global nbr_line
 
     for line in code:
+        nbr_line += 1
+
+        if line[-1] == "}":
+            line = line[:-1]
+
         if line.startswith("spinjutzu "): # affichage dans la console
             try:
                 current_line = line
@@ -81,7 +96,7 @@ def executer_code(code:list[str]):
 
                 list_text = current_text.split("'")
                 if len(list_text)%2 == 0:
-                    raise SyntaxError(f"syntaxe invalide, ligne {code.index(line) + 1} : la chaine de caractère est mal delimitée")
+                    raise SyntaxError(f"syntaxe invalide, ligne {nbr_line} : la chaine de caractère est mal delimitée")
 
                 list_string = []
 
@@ -114,7 +129,7 @@ def executer_code(code:list[str]):
                         name += char
                     if char == "'":
                         on_name = not on_name
-                ecrire_console(f"la variable '{name[:-1]}' n'est pas definie, ligne {code.index(line) + 1}")
+                ecrire_console(f"la variable '{name[:-1]}' n'est pas definie, ligne {nbr_line}")
             except Exception as e:
                 ecrire_console(e)
 
@@ -126,7 +141,7 @@ def executer_code(code:list[str]):
 
                 list_text = val.split("'")
                 if len(list_text)%2 == 0:
-                    raise SyntaxError(f"syntaxe invalide, ligne {code.index(line) + 1} : la chaine de caractère est mal delimitée")
+                    raise SyntaxError(f"syntaxe invalide, ligne {nbr_line} : la chaine de caractère est mal delimitée")
 
                 list_string = []
 
@@ -160,7 +175,12 @@ def executer_code(code:list[str]):
                     if char == "'":
                         on_name = not on_name
 
-                ecrire_console(f"la variable '{name[:-1]}' n'est pas definie, ligne {code.index(line) + 1}")
+                ecrire_console(f"la variable '{name[:-1]}' n'est pas definie, ligne {nbr_line}")
+            except SyntaxError as e:
+                if str(e).startswith("'{' was never closed"):
+                    ecrire_console(f"erreur de syntaxe, ligne {nbr_line} :" + " '{' a été utilisé à tort")
+                else:
+                    ecrire_console(e)
             except Exception as e:
                 ecrire_console(e)
 
@@ -171,7 +191,7 @@ def executer_code(code:list[str]):
 
                 list_text = bool_.split("'")
                 if len(list_text)%2 == 0:
-                    raise SyntaxError(f"syntaxe invalide, ligne {code.index(line) + 1} : la chaine de caractère est mal delimitée")
+                    raise SyntaxError(f"syntaxe invalide, ligne {nbr_line} : la chaine de caractère est mal delimitée")
 
                 list_string = []
 
@@ -211,7 +231,7 @@ def executer_code(code:list[str]):
             except Exception as e:
                 ecrire_console(e)
 
-        elif line != "}" and line != "":
+        elif line != "":
             ecrire_console(f"la commande n'existe pas, ligne {code.index(line) + 1}")
         print(var)
 
