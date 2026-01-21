@@ -5,13 +5,25 @@ let index = 0;
 let score = 0;
 let questions = [];
 
-// 🔗 Association thème → questions
+//  Association thème - questions
 if (theme === "anime") {
     questions = animeQuestions;
 }
 
 if (theme === "ninjago") {
     questions = ninjagoQuestions;
+}
+
+if (theme === "culture") {
+    questions = cultureQuestions;
+}
+
+if (theme === "info") {
+    questions = informatiqueQuestions;
+}
+
+if (theme === "cinema") {
+    questions = cinemaQuestions;
 }
 
 // Sécurité si problème
