@@ -1,6 +1,6 @@
 const informatiqueQuestions = [
     {
-        question: "Qui est le créateur du World Wild Web ?",
+        question: "Qui est le créateur du World Wide Web ?",
 		image: "images/informatique/TBL.png",
         answers: ["Tim Berners-Lee", "Mr Madrias", "Ludovic Pommeret", "Bill Gates"],
         correct: 0
@@ -10,6 +10,12 @@ const informatiqueQuestions = [
         question: "Que signifie 'CPU' ?",
         answers: ["Central Processing Unit", "Computer Power Unit", "Central Program Unit", "Computer Processing Utility"],
         correct: 0
+    },
+	
+	{
+        question: "Qui a participé grandement au decryptage du code Enigma lors de la seconde guerre mondiale et a donné son nom à un prix nobel d'informatique ?",
+        answers: ["Ken Thompson", "John McAfee", "Kurt Godel", "Alan Turing"],
+        correct: 3
     },
     
 	{

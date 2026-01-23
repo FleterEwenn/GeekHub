@@ -9,5 +9,12 @@ const animeQuestions = [
         question: "Dans One Piece, que cherche Luffy ?",
         answers: ["Un trésor", "Un royaume", "Un dragon", "Un pouvoir"],
         correct: 0
+    },
+	{
+        question: "Quel anime raconte l'évolution d'un joueur de football japonais ?",
+		image: "images/anime/Bluelock.png",
+        answers: ["", "", "Bluelock", ""],
+        correct: 2
     }
+	
 ];
